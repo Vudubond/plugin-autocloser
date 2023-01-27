@@ -442,10 +442,10 @@ LIMIT %d", TICKET_TABLE, $age_days, $from_status, $whereFilter, $max);
     /**
      * Renders a ThreadEntry as HTML.
      *
-     * @param AnnotatedModel $entry
+     * @param AnnotatedModel___ThreadEntry $entry
      * @return string
      */
-    private function render_thread_entry(AnnotatedModel $entry) {
+    private function render_thread_entry(AnnotatedModel___ThreadEntry $entry) {
         $from = ($entry->get('type') == 'R') ? 'Sent' : 'Received';
         $tag = ($entry->get('format') == 'text') ? 'pre' : 'p';
         $when = Format::datetime(strtotime($entry->get('created')));
@@ -461,17 +461,17 @@ PIECE;
     }
 
     /**
-     * $entry should be an AnnotatedModel object, however, we need to check that
+     * $entry should be an AnnotatedModel___ThreadEntry object, however, we need to check that
      * it's actually a type of ThreadEntry, therefore we need to interrogate the
      * Object inside it. Would be good if the $ticket->getResponses() method
      * worked..
      *
-     * @param AnnotatedModel $entry
+     * @param AnnotatedModel___ThreadEntry $entry
      * @param bool $message
      * @param bool $response
      * @return boolean
      */
-    private function is_valid_thread_entry(AnnotatedModel $entry, $message = FALSE, $response = FALSE) {
+    private function is_valid_thread_entry(AnnotatedModel___ThreadEntry $entry, $message = FALSE, $response = FALSE) {
         if (!$entry->model instanceof ThreadEntry) {
             return FALSE;
         }
